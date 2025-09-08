@@ -4,7 +4,6 @@ import Resources.Edge;
 import Resources.Graph;
 import Resources.Node;
 import Resources.Queue;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +12,15 @@ public class BFS {
     private final Graph graph;
     private final Node startNode;
     private final Node goalNode;
-    private final Queue queue = new Queue();
-    private final ArrayList<Node> visitedNodesPath = new ArrayList<>();
+    private final Queue queue;
+    private final ArrayList<Node> visitedNodesPath;
 
     public BFS(Graph graph, Node startNode, Node goalNode) {
         this.graph = graph;
         this.startNode = startNode;
         this.goalNode = goalNode;
+        this.queue = new Queue();
+        this.visitedNodesPath = new ArrayList<>();
     }
 
     public void search() {
