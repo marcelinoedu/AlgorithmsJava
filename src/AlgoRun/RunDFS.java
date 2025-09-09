@@ -3,11 +3,11 @@ package AlgoRun;
 import Resources.Edge;
 import Resources.Graph;
 import Resources.Node;
-import Search.BFS;
+import Search.DFS;
 
-public class RunBFS {
+public class RunDFS {
 
-    public RunBFS(){}
+    public RunDFS(){}
 
     public void run(){
         Node a = new Node("A");
@@ -25,7 +25,7 @@ public class RunBFS {
         g.addEdge(new Edge(b, e, 1.0));
         g.addEdge(new Edge(c, f, 1.0));
 
-        BFS bfs = new BFS(g, e, f);
-        bfs.search();
+        DFS dfs = new DFS(g, e, f);
+        dfs.search();
     }
 }
