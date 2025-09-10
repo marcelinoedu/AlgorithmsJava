@@ -6,9 +6,11 @@ import java.util.HashMap;
 public class Queue {
 
 
-    private final ArrayList<Node> items = new ArrayList<>();
+    private final ArrayList<Node> items;
 
-    public Queue(){}
+    public Queue(){
+        this.items = new ArrayList<>();
+    }
 
     public void enqueue(Node node){
         this.items.add(node);

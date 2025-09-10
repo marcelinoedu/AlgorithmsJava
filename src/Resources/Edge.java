@@ -1,6 +1,6 @@
 package Resources;
 
-public class Edge {
+public class Edge implements Comparable<Edge> {
     private final Node fromNode;
     private final Node toNode;
     private final double cost;
@@ -28,4 +28,10 @@ public class Edge {
     public String toString() {
         return "Edge(" + fromNode.getName() + " -> " + toNode.getName() + ", cost=" + cost + ")";
     }
+
+    @Override
+    public int compareTo(Edge other) {
+        return Double.compare(this.cost, other.cost);
+    }
+
 }
