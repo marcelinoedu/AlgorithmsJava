@@ -18,7 +18,7 @@ public class Heap {
         Edge[] newHeap = Arrays.copyOf(heap, heap.length + 1);
         newHeap[newHeap.length - 1] = edge;
         heap = newHeap;
-        bubbleUp(heap.length - 1);
+        heapUp(heap.length - 1);
     }
 
     public Edge extract() {
@@ -32,13 +32,13 @@ public class Heap {
         heap = Arrays.copyOf(heap, heap.length - 1);
 
         if (heap.length > 0) {
-            bubbleDown(0);
+            heapDown(0);
         }
 
         return minEdge;
     }
 
-    private void bubbleUp(int i) {
+    private void heapUp(int i) {
         while (i > 0) {
             int parent = (i - 1) / 2;
             if (compare(heap[i], heap[parent])) {
@@ -50,7 +50,7 @@ public class Heap {
         }
     }
 
-    private void bubbleDown(int i) {
+    private void heapDown(int i) {
         int target = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
@@ -64,7 +64,7 @@ public class Heap {
 
         if (target != i) {
             swap(i, target);
-            bubbleDown(target);
+            heapDown(target);
         }
     }
 
