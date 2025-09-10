@@ -8,8 +8,6 @@ public class BubbleSort {
         this.list = unsortedList;
     }
 
-
-
     public int[] sort(){
         boolean trocou = true;
         int c = 0;
