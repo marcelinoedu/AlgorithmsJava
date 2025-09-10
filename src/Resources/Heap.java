@@ -3,11 +3,16 @@ package Resources;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-public class MinHeap {
+public class Heap {
 
     protected Edge[] heap = {};
+    protected String order = "min";
 
-    public MinHeap(){}
+    public Heap(String order){
+        if(order != null && (order.equals("min") || order.equals("max"))){
+            this.order = order;
+        }
+    }
 
     public void insert(Edge edge) {
         Edge[] newHeap = Arrays.copyOf(heap, heap.length + 1);
@@ -35,10 +40,10 @@ public class MinHeap {
 
     private void bubbleUp(int i) {
         while (i > 0) {
-            int superiorIndex = (i - 1) / 2;
-            if (heap[i].getCost() < heap[superiorIndex].getCost()) {
-                swap(i, superiorIndex);
-                i = superiorIndex;
+            int parent = (i - 1) / 2;
+            if (compare(heap[i], heap[parent])) {
+                swap(i, parent);
+                i = parent;
             } else {
                 break;
             }
@@ -46,20 +51,20 @@ public class MinHeap {
     }
 
     private void bubbleDown(int i) {
-        int smallest = i;
+        int target = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
 
-        if (left < heap.length && heap[left].getCost() < heap[smallest].getCost()) {
-            smallest = left;
+        if (left < heap.length && compare(heap[left], heap[target])) {
+            target = left;
         }
-        if (right < heap.length && heap[right].getCost() < heap[smallest].getCost()) {
-            smallest = right;
+        if (right < heap.length && compare(heap[right], heap[target])) {
+            target = right;
         }
 
-        if (smallest != i) {
-            swap(i, smallest);
-            bubbleDown(smallest);
+        if (target != i) {
+            swap(i, target);
+            bubbleDown(target);
         }
     }
 
@@ -67,5 +72,16 @@ public class MinHeap {
         Edge temp = heap[i];
         heap[i] = heap[j];
         heap[j] = temp;
+    }
+
+
+    private boolean compare(Edge a, Edge b){
+
+        if(order.equals("min")){
+            return a.getCost() < b.getCost();
+        } else {
+            return a.getCost() > b.getCost();
+        }
+
     }
 }
