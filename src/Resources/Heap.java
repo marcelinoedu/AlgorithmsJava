@@ -84,4 +84,9 @@ public class Heap {
         }
 
     }
+
+    @Override
+    public String toString(){
+        return Arrays.toString(heap);
+    }
 }

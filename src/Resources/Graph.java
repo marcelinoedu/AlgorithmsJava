@@ -26,7 +26,7 @@ public class Graph {
         adjList.get(edge.getFromNode()).add(edge);
 
         if(!directed){
-            Edge reverse = new Edge(edge.getToNode(), edge.getFromNode(), 1.0);
+            Edge reverse = new Edge(edge.getToNode(), edge.getFromNode(),  edge.getCost());
             adjList.get(edge.getToNode()).add(reverse);
         }
     }
